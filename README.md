@@ -1,6 +1,9 @@
 # amiya
-《明日方舟》QQ bot，拥有干员、材料查询，理智恢复提醒，明日方舟官博消息推送等多种功能
-> 基于 [mirai](https://github.com/mamoe/mirai) 开发的qq bot<br>
+《明日方舟》QQ bot，拥有干员、材料查询，理智恢复提醒，明日方舟官博消息推送等多种功能。
+
+> amiya是基于 [mirai](https://github.com/mamoe/mirai) 开发的, 与《明日方舟》相关的qq bot
+<br>
+
 > amiya是在[《明日方舟》](https://ak.hypergryph.com/) 游戏爱好者群体中诞生的,以方便玩家为主旨的QQ bot。
 > bot的名字源于游戏 [《明日方舟》](https://ak.hypergryph.com/) 的女主角"阿米娅"，其主题与核心功能也和游戏相关。
 
