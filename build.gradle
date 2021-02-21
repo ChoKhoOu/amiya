@@ -1,0 +1,44 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+}
+
+group = 'top.chokhoou'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+
+    jcenter()
+    mavenCentral()
+
+    maven { url 'https://maven.aliyun.com/repository/google/' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'mysql:mysql-connector-java'
+    annotationProcessor 'org.projectlombok:lombok'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2'
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.2'
+    api group: 'net.mamoe', name: 'mirai-core', version: '2.3.2'
+
+    compile 'cn.hutool:hutool-all:5.5.7'
+    compile 'com.github.ben-manes.caffeine:caffeine:2.8.8'
+    compile 'com.alibaba.nacos:nacos-client:1.4.1'
+}
+
+test {
+    useJUnitPlatform()
+}
