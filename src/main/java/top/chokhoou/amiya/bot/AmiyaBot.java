@@ -1,7 +1,8 @@
-package top.chokhoou.amiya;
+package top.chokhoou.amiya.bot;
 
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.BotFactory;
+import net.mamoe.mirai.event.Events;
 import net.mamoe.mirai.event.ListenerHost;
 import net.mamoe.mirai.utils.BotConfiguration;
 import top.chokhoou.amiya.common.logger.AmiyaLogger;
@@ -26,20 +27,24 @@ public class AmiyaBot {
         if (IS_STARTUP_COMPLETED) {
             throw new ServiceException("Amiya bot is already startup.");
         }
-        synchronized (AmiyaBot.class) {
-            // config
-            BotConfiguration config = new BotConfiguration();
-            config.fileBasedDeviceInfo(deviceInfo);
-            config.setBotLoggerSupplier(bot -> new AmiyaLogger());
-            config.setNetworkLoggerSupplier(bot -> new NetWorkLogger());
+        // config
+        BotConfiguration config = new BotConfiguration();
+        config.fileBasedDeviceInfo(deviceInfo);
+        config.loadDeviceInfoJson(deviceInfo);
+        config.setBotLoggerSupplier(bot -> new AmiyaLogger());
+        config.setNetworkLoggerSupplier(bot -> new NetWorkLogger());
 
-            // instantiate the bot
-            INSTANCE = BotFactory.INSTANCE.newBot(account, pwd, config);
-            INSTANCE.login();
+        // instantiate the bot
+        INSTANCE = BotFactory.INSTANCE.newBot(account, pwd, config);
+        INSTANCE.login();
 
-            EXECUTOR_SERVICE.submit(() -> INSTANCE.join());
-            IS_STARTUP_COMPLETED = true;
+        // register the event
+        for (ListenerHost event : events) {
         }
+
+        EXECUTOR_SERVICE.submit(() -> INSTANCE.join());
+        IS_STARTUP_COMPLETED = true;
+
 
     }
 

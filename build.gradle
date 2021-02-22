@@ -33,7 +33,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2'
     compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.2'
     api group: 'net.mamoe', name: 'mirai-core', version: '2.3.2'
-
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     compile 'cn.hutool:hutool-all:5.5.7'
     compile 'com.github.ben-manes.caffeine:caffeine:2.8.8'
     compile 'com.alibaba.nacos:nacos-client:1.4.1'
